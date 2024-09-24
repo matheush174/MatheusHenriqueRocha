@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios 21</title>
+    <style>
+        body 
+        {
+        background-color: royalblue;
+        font-family: Arial, sans-serif;
+        color: black;
+        }
+
+        h1 
+        {
+        font-size: 36px;
+        font-weight: bold;
+        margin-top: 50px;
+        }
+
+        h2 
+        {
+        font-size: 24px;
+        margin-top: 20px;
+        }
+
+        p 
+        {
+        font-size: 18px;
+        margin-top: 30px;
+        line-height: 1.5;
+        }
+
+        input[type="number"] 
+        {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        margin: 10px;
+        }
+
+        input[type="text"] 
+        {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        margin: 10px;
+        }
+
+        input[type="button"] 
+        {
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: #693f45;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        margin-top: 20px;
+        }
+
+        input[type="button"]:hover 
+        {
+        background-color: #522c32;
+        }
+
+        #result 
+        {
+        font-size: 24px;
+        margin-top: 30px;
+        font-weight: bold;
+        }
+        label 
+        {
+        font-size: 20px;
+        margin-bottom: 10px;
+        }
+        select 
+        {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        margin: 10px;
+        }
+        .container 
+        {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .box 
+        {
+            width: 150px;
+            height: auto;
+            background-color: white;
+            border: 2px solid black;
+            margin: 10px;
+            padding: 10px;
+        }
+        ul 
+        {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+    </style>
+    <script>
+
+    var contador = 0;
+
+        function voceEstaApto()
+        {
+            
+            var nome = document.getElementById("nome").value;
+            var sexo = document.getElementById("sexo").value;
+            var idade = document.getElementById("idade").value;
+            var saude = document.getElementById("saude").value;
+
+            var nomeR = document.getElementById("nomeResult");
+            var sexoR = document.getElementById("sexoResult");
+            var idadeR = document.getElementById("idadeResult");
+            var saudeR = document.getElementById("saudeResult");
+            var apto = document.getElementById("aptoResult");
+            var totalApto = document.getElementById("totalApto");
+
+            if(idade >= 18 && saude == "Bem" && sexo != "Feminino")
+            {
+                nomeR.innerHTML += "<li>" + nome + "</li>";
+                sexoR.innerHTML += "<li>" + sexo + "</li>";
+                idadeR.innerHTML += "<li>" + idade + "</li>";
+                saudeR.innerHTML += "<li>" + saude + "</li>";
+                apto.innerHTML += "<li>" + "Sim" + "</li>";
+                contador++;
+                totalApto.innerHTML = contador;
+            }
+            else
+            {
+                nomeR.innerHTML += "<li>" + nome + "</li>";
+                sexoR.innerHTML += "<li>" + sexo + "</li>";
+                idadeR.innerHTML += "<li>" + idade + "</li>";
+                saudeR.innerHTML += "<li>" + saude + "</li>";
+                apto.innerHTML += "<li>" + "Não" + "</li>";
+            }            
+
+        }
+
+    </script>
+</head>
+<body>
+    <h1>
+        aluno: Matheus Henrique Rocha Almeida;
+        matricula: 23114290133
+    </h1>
+
+    <h2>Turma: OADSDM1A-RCT002-20231 - IESB OESTE</h2>
+
+    <p>"Digite as informações necessárias para saber se você é a apto ou não para o serviço militar"</p>
+
+    <label for="nome"></label>
+    <input placeholder="Digite seu nome..." type="text" id="nome">
+
+    <select id="sexo">
+        <option disabled selected hidden>Escolha seu gênero</option>
+        <option>Masculino</option>
+        <option>Feminino</option>
+    </select>
+
+    <label for="idade"></label>
+    <input placeholder="Digite sua idade..." type="number" id="idade">
+
+    <select id="saude">
+        <option disabled selected hidden>Como você está de saude</option>
+        <option>Mal</option>
+        <option>Bem</option>
+    </select>
+
+    <input type="button" value="Armazenar" onclick="voceEstaApto()">
+
+    <p>Total Aptos:<p id="totalApto"> 0 </p></p>
+
+    <div class="container">
+        <div class="box">
+            <h2>Nome</h2>       
+            <ul id="nomeResult"></ul>
+        </div>
+        <div class="box">
+            <h2>Sexo</h2>  
+            <ul id="sexoResult"></ul>   
+        </div>
+        <div class="box">
+            <h2>Idade</h2>  
+            <ul id="idadeResult"></ul>
+        </div>
+        <div class="box">
+            <h2>Saude</h2>  
+            <ul id="saudeResult"></ul>  
+        </div> 
+        <div class="box">
+            <h2>Apto</h2>  
+            <ul id="aptoResult"></ul>  
+        </div>            
+        </div>
+
+</body>
+</html>
