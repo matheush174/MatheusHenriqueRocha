@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios 21</title>
+    <style>
+        /* Estilo global da página */
+        body {
+            background-color: #d3d3d3; /* Fundo cinza */
+            font-family: Arial, sans-serif;
+            color: black;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Estilo do cabeçalho */
+        h1, h2 {
+            font-family: 'Arial', sans-serif;
+            color: white;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            background-color: #006400; /* Verde exército escuro */
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        h2 {
+            background-color: #228B22; /* Verde exército mais claro */
+            font-size: 24px;
+        }
+
+        /* Parágrafo de instrução */
+        p {
+            font-size: 18px;
+            margin: 20px;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        /* Estilo dos campos de input */
+        input[type="number"], input[type="text"], select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Estilo do botão */
+        input[type="button"] {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #228B22; /* Verde exército mais claro */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            display: block;
+            margin: 20px auto;
+        }
+
+        input[type="button"]:hover {
+            background-color: #006400; /* Verde exército escuro no hover */
+        }
+
+        /* Estilo do resultado */
+        #result {
+            font-size: 24px;
+            margin-top: 30px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        label {
+            font-size: 20px;
+            margin-bottom: 10px;
+            display: block;
+            text-align: center;
+        }
+
+        select {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Container flexível para caixas */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        /* Estilo das caixas */
+        .box {
+            width: 150px;
+            height: auto;
+            background-color: white;
+            border: 2px solid black;
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            font-size: 18px;
+        }
+
+    </style>
+    <script>
+        var contador = 0;
+
+        function voceEstaApto() {
+            var nome = document.getElementById("nome").value;
+            var sexo = document.getElementById("sexo").value;
+            var idade = document.getElementById("idade").value;
+            var saude = document.getElementById("saude").value;
+
+            var nomeR = document.getElementById("nomeResult");
+            var sexoR = document.getElementById("sexoResult");
+            var idadeR = document.getElementById("idadeResult");
+            var saudeR = document.getElementById("saudeResult");
+            var apto = document.getElementById("aptoResult");
+            var totalApto = document.getElementById("totalApto");
+
+            if(idade >= 18 && saude == "Bem" && sexo != "Feminino") {
+                nomeR.innerHTML += "<li>" + nome + "</li>";
+                sexoR.innerHTML += "<li>" + sexo + "</li>";
+                idadeR.innerHTML += "<li>" + idade + "</li>";
+                saudeR.innerHTML += "<li>" + saude + "</li>";
+                apto.innerHTML += "<li>" + "Sim" + "</li>";
+                contador++;
+                totalApto.innerHTML = contador;
+            } else {
+                nomeR.innerHTML += "<li>" + nome + "</li>";
+                sexoR.innerHTML += "<li>" + sexo + "</li>";
+                idadeR.innerHTML += "<li>" + idade + "</li>";
+                saudeR.innerHTML += "<li>" + saude + "</li>";
+                apto.innerHTML += "<li>" + "Não" + "</li>";
+            }            
+        }
+    </script>
+</head>
+<body>
+    <h1>Teste de aptidão física para o exército.</h1>
+    <h2>Digite as informações necessárias para saber se você é apto ou não para o serviço militar</h2>
+
+    <input placeholder="Digite seu nome..." type="text" id="nome">
+    <select id="sexo">
+        <option disabled selected hidden>Escolha seu gênero</option>
+        <option>Masculino</option>
+        <option>Feminino</option>
+    </select>
+    <input placeholder="Digite sua idade..." type="number" id="idade">
+    <select id="saude">
+        <option disabled selected hidden>Como você está de saúde</option>
+        <option>Mal</option>
+        <option>Bem</option>
+    </select>
+
+    <input type="button" value="Armazenar" onclick="voceEstaApto()">
+
+    <p>Total Aptos:<p id="totalApto"> 0 </p></p>
+
+    <div class="container">
+        <div class="box">
+            <h2>Nome</h2>
+            <ul id="nomeResult"></ul>
+        </div>
+        <div class="box">
+            <h2>Sexo</h2>
+            <ul id="sexoResult"></ul>
+        </div>
+        <div class="box">
+            <h2>Idade</h2>
+            <ul id="idadeResult"></ul>
+        </div>
+        <div class="box">
+            <h2>Saúde</h2>
+            <ul id="saudeResult"></ul>
+        </div>
+        <div class="box">
+            <h2>Apto</h2>
+            <ul id="aptoResult"></ul>
+        </div>
+    </div>
+</body>
+</html>
